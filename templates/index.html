@@ -1,0 +1,51 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filippo Pietro Neri</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="icon" type="image/x-icon" href="{{url_for('static', filename='img/favicon.ico')}}">
+</head>
+
+<body>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <div class="imct">
+                <img src="{{url_for('static', filename='img/avatar.jpg')}}" width="200"
+                    class="img-thumbnail rounded-circle" alt="">
+                <h1 class="display-4">Filippo Pietro Neri</h1>
+            </div>
+            <p class="lead">Benvenuti nel mio portfolio!</p>
+            <p class="lead">Sono uno studente di informatica alla scuola di Milano <a href="https://www.iisgalvanimi.edu.it">IIS Luigi Galvani</a>.
+                Attraverso gli anni che ho passato a scuola, ho affinato le mie competenze nell'ambito della
+                programmazione, del web development, e della sicurezza informatica. Ho deciso di creare un portfolio per
+                mostrare le mie capacità e tutti i miei progetti che ho creato in tutti questi anni. Sono sempre alla
+                ricerca di nuove sfide e opportunità per imparare nel mondo dell'informatica.</p>
+        </div>
+    </div>
+    <div class="container">
+        <h1 class="display-9 mb">I miei progetti</h1>
+        <div class="row pt-3">
+            {% for repo in projects %}
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <img src="https://skillicons.dev/icons?theme=dark&i={{repo.language.lower()}}" class="mb-2" alt="">
+                        <h5 class="card-title">{{repo.name.upper()}}</h5>
+                        <p class="card-text">{{repo.description}}</p>
+                        <a href="https://github.com/{{repo.full_name}}" class="btn btn-dark">Visita {{repo.name}}</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <footer class="bg-body-tertiary text-center text-lg-start">
+        <div id="copyright" class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);"></div>
+    </footer>
+    <script src="{{url_for('static', filename='js/main.js')}}"></script>
+</body>
+
+</html>
